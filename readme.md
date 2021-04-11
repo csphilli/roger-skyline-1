@@ -1,5 +1,5 @@
 # Roger Skyline-1
-**DISCLAIMER: This sysadmin stuff bores me. I'm only doing the required portion of this project which is just the Network and Security Part**
+**DISCLAIMER: This sysadmin stuff isn't for me. I'm only doing the required portion of this project which is just the Network and Security Part**
 
 The goal of my writing for this project is to be as thorough as possible so that any uncertainty can be addressed right here in this readme vs you having to check additional sources. 
 
@@ -350,5 +350,6 @@ However, if you read the mail that was sent to your user, you can verify that it
 ![alt text](mailfrom.png "mailfrom")
 
 I went down a rabbit hole of failed attempts trying to resolve this. It has something to do with aliases but I believe that since it was actually sent to the root address, forwarding is not part of the subject. If you have to defend this, proof is in the `/etc/aliases` file at the bottom. As I said, simply changing this to `root` did not send messages to root when you typed `sudo mail`:  
+
 ![alt text](aliases.png "aliases")
 
