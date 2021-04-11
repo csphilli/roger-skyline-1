@@ -20,7 +20,7 @@ apt-get install sudo vim -y
 ```
 # Network and Security Part
 
-##	You must create a non-root user to conect to the machine and work.
+##	You must create a non-root user to connect to the machine and work.
 
 * This was done during the setup of the VM.
 ##	Use sudo, with this user, to be able to perform operations requiring special rights.
