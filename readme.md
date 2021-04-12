@@ -85,7 +85,18 @@ sudo vim /etc/ssh/sshd_config
 ```
 ssh-keygen
 ```   
-**If you already use id_rsa.pub, DO NOT override it with a new pair**
+**If you already use id_rsa.pub, DO NOT override it with a new pair**  
+
+* This is a side step if you've given your keypair a specific name. You MUST add it to the list of keys your host will use to authenticate against the VM. Otherwise it won't find it during authentication.
+	* Turn on ssh-agent
+	```
+	eval $(ssh-agent)
+	```
+	* Add your keyname (PRIVATE KEY, not .pub) to the agent
+	```
+	ssh-add private_key_name
+	```
+
 * Copy the new key to your VM  
 ```
 ssh-copy-id -i ~/.ssh/your_key_name.pub hostname@ip_address -p port_nbr
