@@ -87,7 +87,7 @@ ssh-keygen
 ```   
 **If you already use id_rsa.pub, DO NOT override it with a new pair**  
 
-* This is a side step if you've given your keypair a specific name. You MUST add it to the list of keys your host will use to authenticate against the VM. Otherwise it won't find it during authentication.
+* This is a side step if you've given your keypair a specific name. You MUST add it to the list of keys your host will use to authenticate against the VM. Otherwise it won't find it during authentication. Keep in mind, I believe that after a specific amount of time, your custom key will "fall off" the keychain and you'll have to `ssh-add` again.
 	* Turn on ssh-agent
 	```
 	eval $(ssh-agent)
@@ -261,6 +261,17 @@ sudo service portsentry status
 ```
 sudo lsof -i
 ```
+* To test if portsentry is working, installed `nmap` on a guest computer. To be safe, I simply created another debian VM vs using my personal computer in case the shit hit the fan.
+	* Once you have nmap installed 
+	```
+	nmap -A <ip_address_to_scan>
+	```
+	* Now back on the host machine
+	```
+	sudo service portsentry status
+	```
+	* It should be alerting you of an attackalert. It should have also added the IP address to the `/etc/hosts.deny` while which you should remove. You'll also need to full reboot your VM for portsentry to clear everything out. I've tried doing most of the tricks specified on the internet to clear it without having to reboot but I finally threw my hands up.
+
 ## Stop the services you don’t need for this project.
 * List current services that are enabled:
 ```
